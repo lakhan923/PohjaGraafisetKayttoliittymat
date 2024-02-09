@@ -3,10 +3,6 @@
 ## Goal:
 Create and work with multiple forms within a Windows Forms application using C#.
 
-## Prerequisites:
-- Installed Visual Studio (any version supporting Windows Forms).
-- Basic knowledge of C# programming.
-- Familiarity with Windows Forms application development.
 
 ## Task Steps:
 
