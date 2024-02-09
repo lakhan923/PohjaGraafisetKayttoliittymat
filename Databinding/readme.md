@@ -11,7 +11,7 @@ Implement data binding in a Windows Forms application to showcase the power and 
 - Open the Form1.cs file in the designer.
 - Add controls to the form that you want to bind to data (e.g., TextBoxes, Labels, DataGridView).
 
-- !malli[esim.png]
+- !malli [./esim.png]
 
 ### 3. Create a Data Model:
 
