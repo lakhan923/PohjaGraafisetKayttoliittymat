@@ -3,11 +3,6 @@
 ## Goal:
 Implement data binding in a Windows Forms application to showcase the power and simplicity of connecting UI elements to data sources.
 
-## Prerequisites:
-- Installed Visual Studio (any version supporting Windows Forms).
-- Basic knowledge of C# programming.
-- Familiarity with Windows Forms application development.
-
 ## Steps:
 
 ### 1. Create a New Windows Forms Project:
@@ -30,20 +25,25 @@ Implement data binding in a Windows Forms application to showcase the power and 
   ```csharp
   public class Person
   {
-      public string FirstName { get; set; }
-      public string LastName { get; set; }
-  }
+        public string FirstName { get; }
+        public string LastName { get; }
+
+        public Person(string fName, string lName)
+        {
+            FirstName = fName;
+            LastName = lName;
+        }
 
 ### 4. Add a Binding Source:
 
-- Drag a `BindingSource` component from the Toolbox onto the form.
-- Set the `DataSource` property of the `BindingSource` to an instance of your data model class (e.g., `List<Person>`).
+
+- Set the `DataSource` property to the `BindingList`.
 
   ```csharp
   public partial class Form1 : Form
   {
-      private BindingSource personBindingSource;
-      private List<Person> people;
+      private BindingList<Person> listOfPersons;
+     
 
       public Form1()
       {
@@ -52,37 +52,30 @@ Implement data binding in a Windows Forms application to showcase the power and 
           // Initialize the data source (replace with your data retrieval logic).
           people = GetPeopleData();
 
-          // Create a BindingSource and set its DataSource to the list of people.
-          personBindingSource = new BindingSource();
-          personBindingSource.DataSource = people;
+       
+            // Initialize the data source (replace with your data retrieval logic).
+            // Create a BindingList and
+            listOfPersons = new BindingList<Person>();
+            GetDefaultPeopleData();
       }
 
-      private List<Person> GetPeopleData()
-      {
-          // Replace this method with your data retrieval logic.
-          // For simplicity, a static list is used here.
-          return new List<Person>
-          {
-              new Person { FirstName = "John", LastName = "Doe" },
-              new Person { FirstName = "Jane", LastName = "Smith" },
-              // Add more sample data as needed.
-          };
-      }
+      private void Form1_Load(object sender, EventArgs e)
+        {
+            cbPersons.DataSource = listOfPersons;
+            cbPersons.DisplayMember = "LastName";
+        }
+
+      private void GetDefaultPeopleData()
+        {
+            // Replace this method with your data retrieval logic.
+            listOfPersons.Add(new Person("John", "Doe"));
+            listOfPersons.Add(new Person("Jane", "Smith"));
+            // Add more sample data as needed.    
+        }
   }
-### 5. Bind Controls to Data:
+### 5. Add new data to BindingList:
+  -Add functionality button where you can add new Person to BindingList.
+  -Check that ListBox updates correctly
 
-- Select a control (e.g., TextBox) and set its `DataBindings` property.
-- Choose the property you want to bind (e.g., Text) and select the corresponding property from the `BindingSource`.
 
-  ```csharp
-  // Example: Bind a TextBox to the FirstName property.
-  textBoxFirstName.DataBindings.Add("Text", personBindingSource, "FirstName");
-### 6. Implement Two-Way Data Binding (Continued - Optional):
 
-- Set the `DataBindings` property of a control to enable two-way data binding.
-- Update the data in the control, and observe changes in the underlying data source.
-
-  ```csharp
-  // Example: Enable two-way data binding for a TextBox.
-  textBoxLastName.DataBindings.Add("Text", personBindingSource, "LastName", true, DataSourceUpdateMode.OnPropertyChanged);
-In this example, the DataSourceUpdateMode.OnPropertyChanged ensures that changes in the TextBox update the data source immediately when the property changes.
