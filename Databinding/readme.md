@@ -1,6 +1,7 @@
 # Task: Data Binding in Windows Forms
 
 ## Goal:
+Äskeisen tehtävän tavalla jokainen kontrolli joudutaan päivittämään, aina lähde datan muuttuessa. Usein on parempi käyttää Databinding ominaisuutta, jossa näytettävä data sidotaan johonkin lähteeseen BindingList tai BingdinSource(vain winfowms)
 Implement data binding in a Windows Forms application to showcase the power and simplicity of connecting UI elements to data sources.
 
 ## Steps:
