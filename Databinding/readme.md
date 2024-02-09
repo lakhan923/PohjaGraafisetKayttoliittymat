@@ -5,17 +5,13 @@ Implement data binding in a Windows Forms application to showcase the power and 
 
 ## Steps:
 
-### 1. Create a New Windows Forms Project:
-
-- Open Visual Studio.
-- Create a new Windows Forms App (.NET Core) project.
-- Name the project "DataBindingApp" and choose a suitable location.
-- Click "Create" to generate the project.
 
 ### 2. Design the User Interface:
 
 - Open the Form1.cs file in the designer.
 - Add controls to the form that you want to bind to data (e.g., TextBoxes, Labels, DataGridView).
+
+- !malli[esim.png]
 
 ### 3. Create a Data Model:
 
