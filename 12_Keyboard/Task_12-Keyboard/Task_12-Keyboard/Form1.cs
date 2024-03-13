@@ -20,31 +20,22 @@ namespace Task_12_Keyboard
             Graphics Graf = e.Graphics;
 
             // - P‰‰ 
-
             Graf.FillEllipse(Brushes.IndianRed, piste.X - 4, piste.Y - 8, 49, 49);
-
             Graf.DrawEllipse(Pens.Black, piste.X - 4, piste.Y - 8, 49, 49);
 
             // - Selk‰ 
-
             Graf.DrawLine(Pens.Black, piste.X + 21, piste.Y + 41,
-
             piste.X + 21, piste.Y + 131);
 
             // - K‰det 
 
             Graf.DrawLine(Pens.Black, piste.X - 30, piste.Y + 60,
-
             piste.X + 70, piste.Y + 60);
 
             // - Jalat 
-
             Graf.DrawLine(Pens.Black, piste.X + 21, piste.Y + 131,
-
             piste.X - 30, piste.Y + 181);
-
             Graf.DrawLine(Pens.Black, piste.X + 21, piste.Y + 131,
-
             piste.X + 70, piste.Y + 181);
 
             // Kutsutaan DrawCoordinates()-metodia. 
