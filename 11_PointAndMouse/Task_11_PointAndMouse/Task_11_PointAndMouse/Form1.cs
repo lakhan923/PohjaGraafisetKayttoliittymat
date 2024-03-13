@@ -89,14 +89,11 @@ namespace Task_11_PointAndMouse
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (e.Button == MouseButtons.Left)
-                {
-                    // Stores the current mouse location as the new coordinate point
-                    piste = e.Location;
+                // Stores the current mouse location as the new coordinate point
+                piste = e.Location;
 
-                    // Trigger the form to redraw itself
-                    Invalidate();
-                }
+                // Trigger the form to redraw itself
+                Invalidate();
             }
         }
     }
