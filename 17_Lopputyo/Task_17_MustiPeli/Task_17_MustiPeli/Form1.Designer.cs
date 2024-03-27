@@ -153,7 +153,7 @@
             button_playMusic.Name = "button_playMusic";
             button_playMusic.Size = new Size(193, 64);
             button_playMusic.TabIndex = 9;
-            button_playMusic.Text = "Play Sound";
+            button_playMusic.Text = "Play Music";
             button_playMusic.UseVisualStyleBackColor = false;
             button_playMusic.Click += button_playMusic_Click;
             // 

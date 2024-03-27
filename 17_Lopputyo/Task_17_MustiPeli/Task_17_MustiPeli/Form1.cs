@@ -424,7 +424,7 @@ namespace Task_17_MustiPeli
 
         private void button_playMusic_Click(object sender, EventArgs e)
         {
-            SoundPlayer player = new SoundPlayer(@"C:\Users\laaai\Desktop\motivational_sound.mp3");
+            SoundPlayer player = new SoundPlayer(@"song.wav");
             player.Play();
         }
     }
