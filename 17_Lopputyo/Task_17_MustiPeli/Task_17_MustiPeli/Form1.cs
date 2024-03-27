@@ -1,8 +1,12 @@
-namespace Task_17_MemoryGame
+using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Reflection.Emit;
+using System.Numerics;
+
+namespace Task_17_MustiPeli
 {
     public partial class Form1 : Form
     {
-
         List<int> numbers = new List<int> { 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8 };
         private int gameBoardSize = 4; // Default size is 4x4
         string firstChoice;
@@ -20,10 +24,15 @@ namespace Task_17_MemoryGame
         private int currentPlayer = 1;
         private int[] pairsCollected = new int[2];
 
+        // sql connection
+        private SqlConnection connection;
+
 
         public Form1()
         {
             InitializeComponent();
+            string connectionString = "Server=DESKTOP-3T1M5BE\\SQLEXPRESS;Initial Catalog=master;Integrated Security=True;";
+            connection = new SqlConnection(connectionString);
             LoadPictures();
 
 
@@ -44,6 +53,7 @@ namespace Task_17_MemoryGame
             // Select "Fruits" by default
             comboBox_SubjectArea.SelectedItem = "Fruits";
         }
+
 
         private void TimerEvent(object sender, EventArgs e)
         {
@@ -254,6 +264,28 @@ namespace Task_17_MemoryGame
             }
         }
 
+        private void SavePlayerResult(string playerName, int score)
+        {
+            try
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO PlayerScores (PlayerName, Score) VALUES (@PlayerName, @Score)", connection);
+                cmd.Parameters.AddWithValue("@PlayerName", playerName); 
+                cmd.Parameters.AddWithValue("@Score", score);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                if (connection.State == System.Data.ConnectionState.Open)
+                    connection.Close();
+            }
+        }
+
+
         private void GameOver(string message)
         {
             GameTimer.Stop();
@@ -271,6 +303,18 @@ namespace Task_17_MemoryGame
                     winner = "It's a tie";
 
                 MessageBox.Show(message + " Winner: " + winner + ". Click Restart To Play Again.", "Game Over");
+
+                // Save player results to the database
+                int scorePlayer1 = pairsCollected[0];
+                int scorePlayer2 = pairsCollected[1];
+
+                // Ensure player names are correctly assigned
+                string playerNamePlayer1 = "Player 1";
+                string playerNamePlayer2 = "Player 2";
+
+                // Pass player names and scores to SavePlayerResult method
+                SavePlayerResult(playerNamePlayer1, scorePlayer1);
+                SavePlayerResult(playerNamePlayer2, scorePlayer2);
             }
             else
             {

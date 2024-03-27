@@ -1,4 +1,4 @@
-﻿namespace Task_17_MemoryGame
+﻿namespace Task_17_MustiPeli
 {
     partial class Form1
     {
