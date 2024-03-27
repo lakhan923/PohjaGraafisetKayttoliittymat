@@ -1,7 +1,10 @@
+
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Reflection.Emit;
 using System.Numerics;
+using System.Media;
+
 
 namespace Task_17_MustiPeli
 {
@@ -270,7 +273,7 @@ namespace Task_17_MustiPeli
             {
                 connection.Open();
                 SqlCommand cmd = new SqlCommand("INSERT INTO PlayerScores (PlayerName, Score) VALUES (@PlayerName, @Score)", connection);
-                cmd.Parameters.AddWithValue("@PlayerName", playerName); 
+                cmd.Parameters.AddWithValue("@PlayerName", playerName);
                 cmd.Parameters.AddWithValue("@Score", score);
                 cmd.ExecuteNonQuery();
             }
@@ -417,6 +420,12 @@ namespace Task_17_MustiPeli
                     break;
             }
             return imagePath;
+        }
+
+        private void button_playMusic_Click(object sender, EventArgs e)
+        {
+            SoundPlayer player = new SoundPlayer(@"C:\Users\laaai\Desktop\motivational_sound.mp3");
+            player.Play();
         }
     }
 }

@@ -39,6 +39,7 @@
             comboBox_SelectPlayerOption = new ComboBox();
             comboBox_GameSize = new ComboBox();
             comboBox_SubjectArea = new ComboBox();
+            button_playMusic = new Button();
             SuspendLayout();
             // 
             // label_Status
@@ -82,7 +83,7 @@
             // 
             label_CurrentPlayer.AutoSize = true;
             label_CurrentPlayer.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_CurrentPlayer.Location = new Point(578, 63);
+            label_CurrentPlayer.Location = new Point(574, 65);
             label_CurrentPlayer.Name = "label_CurrentPlayer";
             label_CurrentPlayer.Size = new Size(141, 28);
             label_CurrentPlayer.TabIndex = 3;
@@ -144,11 +145,24 @@
             comboBox_SubjectArea.Text = "Select Subject Area";
             comboBox_SubjectArea.SelectedIndexChanged += comboBox_SubjectArea_SelectedIndexChanged;
             // 
+            // button_playMusic
+            // 
+            button_playMusic.BackColor = Color.FromArgb(255, 192, 192);
+            button_playMusic.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button_playMusic.Location = new Point(504, 366);
+            button_playMusic.Name = "button_playMusic";
+            button_playMusic.Size = new Size(193, 64);
+            button_playMusic.TabIndex = 9;
+            button_playMusic.Text = "Play Sound";
+            button_playMusic.UseVisualStyleBackColor = false;
+            button_playMusic.Click += button_playMusic_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1110, 643);
+            Controls.Add(button_playMusic);
             Controls.Add(comboBox_SubjectArea);
             Controls.Add(comboBox_GameSize);
             Controls.Add(comboBox_SelectPlayerOption);
@@ -177,5 +191,6 @@
         private ComboBox comboBox_SelectPlayerOption;
         private ComboBox comboBox_GameSize;
         private ComboBox comboBox_SubjectArea;
+        private Button button_playMusic;
     }
 }
