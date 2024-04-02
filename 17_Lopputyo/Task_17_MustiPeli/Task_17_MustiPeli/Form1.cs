@@ -30,6 +30,9 @@ namespace Task_17_MustiPeli
         // sql connection
         private SqlConnection connection;
 
+        // Sound player location
+        SoundPlayer backgroundMusic = new SoundPlayer(@"song.wav");
+        SoundPlayer winSound = new SoundPlayer(@"winSound.wav");
 
         public Form1()
         {
@@ -304,7 +307,7 @@ namespace Task_17_MustiPeli
                     winner = "Player 2";
                 else
                     winner = "It's a tie";
-
+                winSound.Play();
                 MessageBox.Show(message + " Winner: " + winner + ". Click Restart To Play Again.", "Game Over");
 
                 // Save player results to the database
@@ -424,8 +427,12 @@ namespace Task_17_MustiPeli
 
         private void button_playMusic_Click(object sender, EventArgs e)
         {
-            SoundPlayer player = new SoundPlayer(@"song.wav");
-            player.Play();
+            backgroundMusic.Play();
+        }
+
+        private void button_StopMusic_Click(object sender, EventArgs e)
+        {
+            backgroundMusic.Stop();
         }
     }
 }

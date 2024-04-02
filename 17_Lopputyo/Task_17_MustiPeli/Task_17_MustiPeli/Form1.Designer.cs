@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             label_Status = new Label();
             label_TimeLeft = new Label();
             button_Restart = new Button();
@@ -40,6 +41,7 @@
             comboBox_GameSize = new ComboBox();
             comboBox_SubjectArea = new ComboBox();
             button_playMusic = new Button();
+            button_StopMusic = new Button();
             SuspendLayout();
             // 
             // label_Status
@@ -149,19 +151,33 @@
             // 
             button_playMusic.BackColor = Color.FromArgb(255, 192, 192);
             button_playMusic.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button_playMusic.Location = new Point(504, 366);
+            button_playMusic.Location = new Point(476, 366);
             button_playMusic.Name = "button_playMusic";
-            button_playMusic.Size = new Size(193, 64);
+            button_playMusic.Size = new Size(106, 58);
             button_playMusic.TabIndex = 9;
             button_playMusic.Text = "Play Music";
             button_playMusic.UseVisualStyleBackColor = false;
             button_playMusic.Click += button_playMusic_Click;
             // 
+            // button_StopMusic
+            // 
+            button_StopMusic.BackColor = Color.FromArgb(255, 192, 192);
+            button_StopMusic.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button_StopMusic.Location = new Point(608, 366);
+            button_StopMusic.Name = "button_StopMusic";
+            button_StopMusic.Size = new Size(107, 58);
+            button_StopMusic.TabIndex = 10;
+            button_StopMusic.Text = "Stop Music";
+            button_StopMusic.UseVisualStyleBackColor = false;
+            button_StopMusic.Click += button_StopMusic_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Window;
             ClientSize = new Size(1110, 643);
+            Controls.Add(button_StopMusic);
             Controls.Add(button_playMusic);
             Controls.Add(comboBox_SubjectArea);
             Controls.Add(comboBox_GameSize);
@@ -172,6 +188,7 @@
             Controls.Add(button_Restart);
             Controls.Add(label_TimeLeft);
             Controls.Add(label_Status);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Memory Game";
@@ -192,5 +209,6 @@
         private ComboBox comboBox_GameSize;
         private ComboBox comboBox_SubjectArea;
         private Button button_playMusic;
+        private Button button_StopMusic;
     }
 }
