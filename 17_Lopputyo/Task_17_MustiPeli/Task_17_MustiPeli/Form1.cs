@@ -99,6 +99,7 @@ namespace Task_17_MustiPeli
                 newPic.BackColor = Color.LightGray;
                 newPic.SizeMode = PictureBoxSizeMode.StretchImage;
                 newPic.Click += NewPic_Click;
+                newPic.Paint += NewPic_Paint;
                 pictures.Add(newPic);
 
                 if (rows < 4)
@@ -122,6 +123,24 @@ namespace Task_17_MustiPeli
             AdjustGameBoardLayout();
             RestartGame();
         }
+
+        private void NewPic_Paint(object sender, PaintEventArgs e)
+        {
+            PictureBox pic = sender as PictureBox;
+            Graphics g = e.Graphics;
+
+            // Check if PictureBox's Image property is null
+            if (pic.Image == null)
+            {
+                string questionMark = "?";
+                Font font = new Font("Arial", 12, FontStyle.Bold);
+                SizeF size = g.MeasureString(questionMark, font);
+                float x = (pic.Width - size.Width) / 2;
+                float y = (pic.Height - size.Height) / 2;
+                g.DrawString(questionMark, font, Brushes.Black, x, y);
+            }
+        }
+
 
         private void NewPic_Click(object sender, EventArgs e)
         {
